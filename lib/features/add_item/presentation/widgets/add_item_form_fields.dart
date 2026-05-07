@@ -1,3 +1,5 @@
+import 'dart:ui' as ui;
+
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -12,7 +14,9 @@ import 'package:home_plate_vendor/features/general/domain/entities/category_enti
 class AddItemFormFields extends StatelessWidget {
   final GlobalKey<FormState> formKey;
   final TextEditingController nameController;
+  final TextEditingController nameArController;
   final TextEditingController descriptionController;
+  final TextEditingController descriptionArController;
   final TextEditingController priceController;
   final TextEditingController discountController;
   final TextEditingController prepTimeController;
@@ -29,7 +33,9 @@ class AddItemFormFields extends StatelessWidget {
     super.key,
     required this.formKey,
     required this.nameController,
+    required this.nameArController,
     required this.descriptionController,
+    required this.descriptionArController,
     required this.priceController,
     required this.discountController,
     required this.prepTimeController,
@@ -127,26 +133,61 @@ class AddItemFormFields extends StatelessWidget {
         ),
         SizedBox(height: 16.h),
 
-        _buildLabel('food_name_label'.tr()),
+        _buildLabel('food_name_en_label'.tr()),
         SizedBox(height: 8.h),
-        CustomTextField(
-          hintText: 'food_name_hint'.tr(),
-          controller: nameController,
-          errorText: errors?['name']?.toString(),
-          validator: (val) =>
-              Validators.required(val, fieldName: 'food_name_label'.tr()),
+        Directionality(
+          textDirection: ui.TextDirection.ltr,
+          child: CustomTextField(
+            hintText: 'food_name_en_hint'.tr(),
+            controller: nameController,
+            errorText: errors?['name']?.toString(),
+            validator: (val) =>
+                Validators.required(val, fieldName: 'food_name_en_label'.tr()),
+          ),
         ),
         SizedBox(height: 16.h),
 
-        _buildLabel('description_label'.tr()),
+        _buildLabel('food_name_ar_label'.tr()),
         SizedBox(height: 8.h),
-        CustomTextField(
-          hintText: 'description_hint'.tr(),
-          maxLines: 4,
-          controller: descriptionController,
-          errorText: errors?['description']?.toString(),
-          validator: (val) =>
-              Validators.required(val, fieldName: 'description_label'.tr()),
+        Directionality(
+          textDirection: ui.TextDirection.rtl,
+          child: CustomTextField(
+            hintText: 'food_name_ar_hint'.tr(),
+            controller: nameArController,
+            errorText: errors?['name_ar']?.toString(),
+            validator: (val) =>
+                Validators.required(val, fieldName: 'food_name_ar_label'.tr()),
+          ),
+        ),
+        SizedBox(height: 16.h),
+
+        _buildLabel('description_en_label'.tr()),
+        SizedBox(height: 8.h),
+        Directionality(
+          textDirection: ui.TextDirection.ltr,
+          child: CustomTextField(
+            hintText: 'description_en_hint'.tr(),
+            maxLines: 4,
+            controller: descriptionController,
+            errorText: errors?['description']?.toString(),
+            validator: (val) =>
+                Validators.required(val, fieldName: 'description_en_label'.tr()),
+          ),
+        ),
+        SizedBox(height: 16.h),
+
+        _buildLabel('description_ar_label'.tr()),
+        SizedBox(height: 8.h),
+        Directionality(
+          textDirection: ui.TextDirection.rtl,
+          child: CustomTextField(
+            hintText: 'description_ar_hint'.tr(),
+            maxLines: 4,
+            controller: descriptionArController,
+            errorText: errors?['description_ar']?.toString(),
+            validator: (val) =>
+                Validators.required(val, fieldName: 'description_ar_label'.tr()),
+          ),
         ),
         SizedBox(height: 16.h),
 

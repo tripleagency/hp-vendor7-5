@@ -22,7 +22,9 @@ class AddItemParams {
   final String categoryId;
   final String subcategoryId;
   final String name;
+  final String nameAr;
   final String description;
+  final String descriptionAr;
   final String price;
   final String? discount;
   final String prepTimeValue;
@@ -37,7 +39,9 @@ class AddItemParams {
     required this.categoryId,
     required this.subcategoryId,
     required this.name,
+    required this.nameAr,
     required this.description,
+    required this.descriptionAr,
     required this.price,
     this.discount,
     required this.prepTimeValue,
@@ -54,7 +58,9 @@ class AddItemParams {
       'category_id': categoryId,
       'subcategory_id': subcategoryId,
       'name': name,
+      'name_ar': nameAr,
       'description': description,
+      'description_ar': descriptionAr,
       'price': price,
       'discount': discount,
       'prep_time_value': prepTimeValue,

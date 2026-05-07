@@ -38,7 +38,9 @@ class _CreateRecipeScreenState extends State<CreateRecipeScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   final TextEditingController _nameController = TextEditingController();
+  final TextEditingController _nameArController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
+  final TextEditingController _descriptionArController = TextEditingController();
   final TextEditingController _priceController = TextEditingController();
   final TextEditingController _discountController = TextEditingController();
   final TextEditingController _prepTimeController = TextEditingController();
@@ -69,7 +71,9 @@ class _CreateRecipeScreenState extends State<CreateRecipeScreen> {
     final existing = widget.existingItem;
     if (existing != null) {
       _nameController.text = existing.name;
+      _nameArController.text = existing.nameAr;
       _descriptionController.text = existing.description;
+      _descriptionArController.text = existing.descriptionAr;
       _priceController.text = existing.price;
       _discountController.text = existing.discount ?? '';
       _prepTimeController.text = existing.prepTimeValue;
@@ -108,7 +112,9 @@ class _CreateRecipeScreenState extends State<CreateRecipeScreen> {
   @override
   void dispose() {
     _nameController.dispose();
+    _nameArController.dispose();
     _descriptionController.dispose();
+    _descriptionArController.dispose();
     _priceController.dispose();
     _discountController.dispose();
     _prepTimeController.dispose();
@@ -319,7 +325,9 @@ class _CreateRecipeScreenState extends State<CreateRecipeScreen> {
                       child: AddItemFormFields(
                         formKey: _formKey,
                         nameController: _nameController,
+                        nameArController: _nameArController,
                         descriptionController: _descriptionController,
+                        descriptionArController: _descriptionArController,
                         priceController: _priceController,
                         discountController: _discountController,
                         prepTimeController: _prepTimeController,
@@ -543,8 +551,11 @@ class _CreateRecipeScreenState extends State<CreateRecipeScreen> {
                         categoryId: _selectedCategory!.id.toString(),
                         subcategoryId:
                             _selectedSubCategory!.id.toString(),
-                        name: _nameController.text,
-                        description: _descriptionController.text,
+                        name: _nameController.text.trim(),
+                        nameAr: _nameArController.text.trim(),
+                        description: _descriptionController.text.trim(),
+                        descriptionAr:
+                            _descriptionArController.text.trim(),
                         price: _priceController.text,
                         discount: _discountController.text,
                         prepTimeValue: _prepTimeController.text,

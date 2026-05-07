@@ -9,7 +9,9 @@ class ItemEntity extends Equatable {
   final String vendorId;
   final String categoryId;
   final String name;
+  final String nameAr;
   final String description;
+  final String descriptionAr;
   final String price;
   final String? discount;
   final String prepTimeValue;
@@ -31,7 +33,9 @@ class ItemEntity extends Equatable {
     required this.vendorId,
     required this.categoryId,
     required this.name,
+    this.nameAr = '',
     required this.description,
+    this.descriptionAr = '',
     required this.price,
     this.discount,
     required this.prepTimeValue,
@@ -68,7 +72,9 @@ class ItemEntity extends Equatable {
         vendorId,
         categoryId,
         name,
+        nameAr,
         description,
+        descriptionAr,
         price,
         discount,
         prepTimeValue,
